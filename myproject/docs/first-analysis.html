@@ -9,9 +9,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
+<meta name="author" content="Jaxson Freund" />
 
+<meta name="date" content="2024-02-27" />
 
-<title>Home</title>
+<title>Area Analysis</title>
 
 <script src="site_libs/header-attrs-2.25/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -29,6 +31,9 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -231,6 +236,69 @@ $(document).ready(function () {
 
 
 
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
 
 </head>
 
@@ -238,6 +306,16 @@ $(document).ready(function () {
 
 
 <div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -281,7 +359,9 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Home</h1>
+<h1 class="title toc-ignore">Area Analysis</h1>
+<h4 class="author">Jaxson Freund</h4>
+<h4 class="date">2024-02-27</h4>
 
 </div>
 
@@ -417,8 +497,9 @@ have uncommitted changes.
 
 <p>
 These are the previous versions of the repository in which changes were
-made to the R Markdown (<code>myproject/analysis/index.Rmd</code>) and
-HTML (<code>myproject/docs/index.html</code>) files. If you’ve
+made to the R Markdown
+(<code>myproject/analysis/first-analysis.Rmd</code>) and HTML
+(<code>myproject/docs/first-analysis.html</code>) files. If you’ve
 configured a remote Git repository (see <code>?wflow_git_remote</code>),
 click on the hyperlinks in the table below to view the files as they
 were in that past version.
@@ -450,7 +531,7 @@ Message
 Rmd
 </td>
 <td>
-<a href="https://github.com/jaxmaddix/myproject/blob/7cac815005b4b60997c3db0df3b267d158df191e/myproject/analysis/index.Rmd" target="_blank">7cac815</a>
+<a href="https://github.com/jaxmaddix/myproject/blob/7cac815005b4b60997c3db0df3b267d158df191e/myproject/analysis/first-analysis.Rmd" target="_blank">7cac815</a>
 </td>
 <td>
 Jaxson Freund
@@ -462,57 +543,6 @@ Jaxson Freund
 Add my first analysis
 </td>
 </tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/jaxmaddix/myproject/blob/228a063dce6dede34722d6d7faeb3a14e97d88d9/myproject/analysis/index.Rmd" target="_blank">228a063</a>
-</td>
-<td>
-Jaxson Freund
-</td>
-<td>
-2024-02-22
-</td>
-<td>
-R
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/jaxmaddix/myproject/83bed13611de63023861de0183a64a6d1a798f98/myproject/docs/index.html" target="_blank">83bed13</a>
-</td>
-<td>
-Jaxson Freund
-</td>
-<td>
-2024-02-22
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/jaxmaddix/myproject/7a9759ba76def9d40ca28ba0e444fccc37cfd3b0/myproject/docs/index.html" target="_blank">7a9759b</a>
-</td>
-<td>
-Jaxson Freund
-</td>
-<td>
-2024-02-22
-</td>
-<td>
-Build site.
-</td>
-</tr>
 </tbody>
 </table>
 </div>
@@ -520,8 +550,117 @@ Build site.
 </div>
 </div>
 </div>
-<p>Click on this <a href="first-analysis.html">link</a> to see my
-results.</p>
+<div id="context" class="section level2">
+<h2>Context</h2>
+<p>From January 1-15, 2024, I visited Costa Rica as a class trip. I
+conducted an observational study on foraging behavior of leafcutter
+ants. My goal is to assess qualities of leaves that are rejected far
+from the colony, vs. leaves that are carried all the way to the colony
+entrance and rejected at the doorstep.</p>
+</div>
+<div id="data" class="section level2">
+<h2>Data</h2>
+<pre><code># A tibble: 1,554 × 2
+   Distance  Area
+   &lt;fct&gt;    &lt;dbl&gt;
+ 1 -2       0.781
+ 2 -2       0.874
+ 3 -2       1.45 
+ 4 -2       0.443
+ 5 -2       1.16 
+ 6 -2       0.863
+ 7 -2       0.81 
+ 8 -2       1.05 
+ 9 -2       1.03 
+10 -2       0.939
+# ℹ 1,544 more rows</code></pre>
+</div>
+<div id="visualize-the-data" class="section level2">
+<h2>Visualize the data</h2>
+<p><img src="figure/first-analysis.Rmd/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" /><img src="figure/first-analysis.Rmd/unnamed-chunk-3-2.png" width="672" style="display: block; margin: auto;" /><img src="figure/first-analysis.Rmd/unnamed-chunk-3-3.png" width="672" style="display: block; margin: auto;" /><img src="figure/first-analysis.Rmd/unnamed-chunk-3-4.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="statistics" class="section level2">
+<h2>Statistics</h2>
+<pre><code>              Df Sum Sq Mean Sq F value   Pr(&gt;F)    
+Distance      25   28.9  1.1553   3.496 1.46e-08 ***
+Residuals   1528  505.0  0.3305                     
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<pre><code>$statistics
+    MSerror   Df     Mean       CV
+  0.3304655 1528 1.228566 46.79126
+
+$parameters
+   test   name.t ntr StudentizedRange alpha
+  Tukey Distance  26          5.21071  0.05
+
+$means
+        Area       std   r         se   Min   Max     Q25    Q50     Q75
+-1 1.2685682 0.5440600 132 0.05003526 0.256 3.186 0.89475 1.2440 1.50225
+-2 1.0075946 0.4666685  37 0.09450662 0.384 2.343 0.71300 0.8630 1.28900
+0  1.3095806 0.6564874 124 0.05162407 0.349 4.462 0.94325 1.2070 1.55200
+1  1.3181765 0.7173651 136 0.04929395 0.228 5.486 0.88450 1.1385 1.59175
+10 1.0106136 0.5150416  88 0.06128042 0.174 3.567 0.67525 0.9515 1.26750
+11 1.1398406 0.4386382  69 0.06920517 0.235 2.072 0.86000 1.0930 1.48900
+12 1.1920952 0.5417438  21 0.12544502 0.441 2.744 0.90900 1.0420 1.45900
+13 1.2853053 0.5317337  95 0.05897953 0.329 3.052 0.90550 1.1500 1.58600
+14 1.1091429 0.4891396  70 0.06870907 0.239 2.530 0.77425 1.0370 1.34800
+15 1.1121111 0.3901543   9 0.19162044 0.610 1.891 0.86600 1.1590 1.22000
+16 1.2313409 0.4054133  44 0.08666361 0.666 2.338 0.95600 1.1375 1.44300
+17 1.3291778 0.5662934  45 0.08569527 0.283 2.833 0.91800 1.3490 1.62900
+18 1.2903333 0.7899096   9 0.19162044 0.338 3.013 0.70400 1.3420 1.55700
+19 1.1270667 0.4003059  15 0.14842856 0.419 1.909 0.87600 1.0880 1.41900
+2  1.2437477 0.5679338 107 0.05557394 0.306 3.467 0.84200 1.1770 1.50250
+20 1.9064706 1.2458729  17 0.13942435 0.680 5.650 0.90000 1.6700 2.17000
+21 1.6171429 1.0047838   7 0.21727716 0.560 3.540 1.02500 1.2100 1.98000
+22 1.5690476 0.5954150  21 0.12544502 0.650 2.750 1.10000 1.3800 1.95000
+23 1.5104000 0.5356575  25 0.11497226 0.600 2.470 1.11000 1.6100 1.85000
+3  1.2631379 0.5508285 116 0.05337453 0.318 4.060 0.92625 1.2365 1.50200
+4  1.1206974 0.5026705  76 0.06594112 0.381 3.299 0.77125 1.0505 1.33225
+5  1.2599390 0.6813044  82 0.06348281 0.267 5.320 0.84500 1.1240 1.66900
+6  1.1871860 0.5744438  43 0.08766553 0.453 2.764 0.72350 1.0540 1.55500
+7  0.9659348 0.3553319  46 0.08475868 0.293 1.912 0.74200 0.9470 1.15825
+8  1.1664694 0.5291474  98 0.05806976 0.228 3.100 0.82975 1.0830 1.47700
+9  1.1631364 0.4310594  22 0.12256085 0.261 2.243 0.96475 1.1050 1.48250
+
+$comparison
+NULL
+
+$groups
+        Area groups
+20 1.9064706      a
+21 1.6171429     ab
+22 1.5690476     ab
+23 1.5104000     ab
+17 1.3291778     ab
+1  1.3181765      b
+0  1.3095806      b
+18 1.2903333      b
+13 1.2853053      b
+-1 1.2685682      b
+3  1.2631379      b
+5  1.2599390      b
+2  1.2437477      b
+16 1.2313409      b
+12 1.1920952      b
+6  1.1871860      b
+8  1.1664694      b
+9  1.1631364      b
+11 1.1398406      b
+19 1.1270667      b
+4  1.1206974      b
+15 1.1121111      b
+14 1.1091429      b
+10 1.0106136      b
+-2 1.0075946      b
+7  0.9659348      b
+
+attr(,&quot;class&quot;)
+[1] &quot;group&quot;</code></pre>
+</div>
+<div id="removal-of-outliers" class="section level2">
+<h2>Removal of outliers</h2>
+</div>
 
 
 <!-- Adjust MathJax settings so that all math formulae are shown using
@@ -539,6 +678,8 @@ footer is added to webpages before the MathJax javascript. -->
 
 
 
+</div>
+</div>
 
 </div>
 
@@ -571,6 +712,35 @@ $(document).ready(function () {
 
 <!-- code folding -->
 
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
