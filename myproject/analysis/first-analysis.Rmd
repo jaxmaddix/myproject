@@ -1,0 +1,136 @@
+---
+title: "Area Analysis"
+author: "Jaxson Freund"
+date: "2024-02-27"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+## Context
+From January 1-15, 2024, I visited Costa Rica as a class trip. I conducted an observational study on foraging behavior of leafcutter ants.  My goal is to assess qualities of leaves that are rejected far from the colony, vs. leaves that are carried all the way to the colony entrance and rejected at the doorstep.
+
+
+## Data
+```{R, echo=FALSE, include=FALSE}
+library(tidyverse)
+library(readxl)
+library(ggplot2)
+library(ggforce)
+library(dplyr)
+library(agricolae)
+library(purrr)
+library(readxl)
+library(openxlsx)
+
+
+df <- read_xlsx("~/Desktop/Spring 2024/Field Ecology Lab/Leafcutters Jan 2024/Excel Sheets/No statistics.xlsx")
+
+
+df_long <- tidyr::gather(df, key = "Distance", value = "Area")
+
+df_long$Distance <- as.character(df_long$Distance)
+
+df_long_nona <- df_long[complete.cases(df_long$Area), ]
+
+df_long_nona$Distance <- as.character(df_long_nona$Distance)
+
+df_long_nona$Distance <- factor(df_long_nona$Distance, levels = unique(df_long_nona$Distance))
+```
+
+```{R, echo=FALSE}
+print(df_long_nona)
+```
+
+## Visualize the data
+```{R, echo=FALSE}
+# box  and whisker
+ggplot(df_long_nona, aes(x = Distance, y = Area)) +
+  geom_boxplot() +
+  labs(title = "",
+       x = "Distance from Colony Main Entrance (m)",
+       y = "Leaf Surface Area (cm^2)") +
+  theme(panel.background = element_rect(fill = "white"),
+        panel.grid = element_line(color = "white"),
+        panel.grid.major.x = element_line(color = "white"))+
+  scale_y_continuous(breaks = seq(0, max(df_long_nona$Area), by = 0.5))
+
+# scatter w/ jitter
+ggplot(df_long_nona, aes(x = Distance, y = Area)) +
+  geom_point(position = position_jitter(width = 0.1, height = 0.1), color = "darkgreen", alpha = 0.1) +
+  labs(title = "",
+       x = "Distance from Colony Main Entrance (m)",
+       y = "Leaf Surface Area (cm^2)") +
+  theme(panel.background = element_rect(fill = "white"),
+        panel.grid = element_line(color = "white"),
+        panel.grid.major.x = element_line(color = "white")) +
+  scale_y_continuous(breaks = seq(0, max(df_long_nona$Area), by = 0.5))
+
+# violin plot
+ggplot(df_long_nona, aes(x = Area, y = Distance)) +
+  geom_violin() +
+  geom_sina(color = "darkgreen", alpha = 0.5) +  # Use geom_sina for adjusted jitter
+  labs(title = "",
+       x = "Leaf Surface Area (cm^2)",
+       y = "Distance from Colony Main Entrance (m)") +
+  theme(panel.background = element_rect(fill = "white"),
+        panel.grid = element_line(color = "white"),
+        panel.grid.major.y = element_line(color = "white")) +
+  scale_x_continuous(breaks = seq(0, max(df_long_nona$Area), by = 0.5)) +
+  coord_flip()
+
+# bar chart
+summary_data <- df_long_nona %>%
+  group_by(Distance) %>%
+  summarize(Mean = mean(Area, na.rm = TRUE),
+            SE = sd(Area, na.rm = TRUE) / sqrt(sum(!is.na(Area))))
+
+ggplot(summary_data, aes(x = Distance, y = Mean, fill = factor(Distance))) +
+  geom_bar(stat = "identity", position = "dodge", fill = ifelse(summary_data$Distance == "0", "firebrick3", "darkslategray4")) +
+  geom_errorbar(aes(ymin = Mean - SE, ymax = Mean + SE), position = position_dodge(width = 0.8), width = 0.25) +
+  labs(title = "",
+       x = "Distance from Colony Main Entrance (m)",
+       y = "Leaf Surface Area (cm^2)") +
+  theme(legend.position = "none",
+        panel.background = element_rect(fill = "white"),
+        panel.grid = element_line(color = "white"),
+        panel.grid.major.x = element_line(color = "white"))
+```
+
+## Statistics
+```{R, echo=FALSE, include=FALSE}
+na.omit(df_long_nona)
+model <- aov(Area ~ Distance, data = df_long_nona)
+```
+```{R, echo=FALSE}
+summary(model)
+tukey_results <- HSD.test(model, "Distance")
+print(tukey_results)
+```
+
+## Removal of outliers
+```{R, echo=FALSE, include=FALSE}
+# Load necessary libraries
+library(dplyr)
+
+# Specify the columns for which you want to check outliers
+columns_to_check <- c("Area", "Distance")
+
+# Function to remove outliers based on box-and-whisker plot
+remove_outliers <- function(x) {
+  bp <- boxplot(x, plot = FALSE)
+  outliers <- bp$out
+  return(outliers)
+}
+
+# Identify and store outliers
+outliers_list <- df_long_nona %>%
+  group_by(Distance) %>%
+  summarise(across(all_of("Area"), remove_outliers)) %>%
+  unnest(cols = c(Area))
+
+# Create df_no_outliers by removing outliers for each column
+df_no_outliers <- df_long_nona %>%
+  anti_join(outliers_list, by = c("Distance" = "Distance", "Area" = "Area"))
+```
+
