@@ -108,29 +108,3 @@ tukey_results <- HSD.test(model, "Distance")
 print(tukey_results)
 ```
 
-## Removal of outliers
-```{R, echo=FALSE, include=FALSE}
-# Load necessary libraries
-library(dplyr)
-
-# Specify the columns for which you want to check outliers
-columns_to_check <- c("Area", "Distance")
-
-# Function to remove outliers based on box-and-whisker plot
-remove_outliers <- function(x) {
-  bp <- boxplot(x, plot = FALSE)
-  outliers <- bp$out
-  return(outliers)
-}
-
-# Identify and store outliers
-outliers_list <- df_long_nona %>%
-  group_by(Distance) %>%
-  summarise(across(all_of("Area"), remove_outliers)) %>%
-  unnest(cols = c(Area))
-
-# Create df_no_outliers by removing outliers for each column
-df_no_outliers <- df_long_nona %>%
-  anti_join(outliers_list, by = c("Distance" = "Distance", "Area" = "Area"))
-```
-
