@@ -95,6 +95,7 @@ ggplot(summary_data, aes(x = Distance, y = Mean, fill = factor(Distance))) +
         panel.background = element_rect(fill = "white"),
         panel.grid = element_line(color = "white"),
         panel.grid.major.x = element_line(color = "white"))
+print(summary_data)
 ```
 
 ## Statistics

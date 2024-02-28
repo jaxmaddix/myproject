@@ -1,0 +1,228 @@
+---
+title: "quadrat_analysis"
+author: "Jaxson Freund"
+date: "2024-02-27"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+## Data
+
+```{R, echo=FALSE, include=FALSE}
+library(tidyverse)
+library(readxl)
+library(ggplot2)
+library(ggforce)
+library(dplyr)
+library(agricolae)
+library(purrr)
+library(readxl)
+library(openxlsx)
+
+
+df <- read_xlsx("~/Desktop/Spring 2024/Field Ecology Lab/Leafcutters Jan 2024/Excel Sheets/No statistics.xlsx")
+
+
+df_long <- tidyr::gather(df, key = "Distance", value = "Area")
+
+df_long$Distance <- as.character(df_long$Distance)
+
+df_long_nona <- df_long[complete.cases(df_long$Area), ]
+
+df_long_nona$Distance <- as.character(df_long_nona$Distance)
+
+df_long_nona$Distance <- factor(df_long_nona$Distance, levels = unique(df_long_nona$Distance))
+
+summary_data <- df_long_nona %>%
+  group_by(Distance) %>%
+  summarize(Mean = mean(Area, na.rm = TRUE),
+            SE = sd(Area, na.rm = TRUE) / sqrt(sum(!is.na(Area))))
+area_vector <- summary_data$Mean
+distance_vector <- summary_data$Distance
+
+mass_count_excel_file_path <- "~/Desktop/Spring 2024/Field Ecology Lab/Leafcutters Jan 2024/Excel Sheets/Area Data.xlsx"
+
+df_excel <- read_excel(mass_count_excel_file_path)
+
+leaf_count_row <- df_excel[2, ]
+count_vector <- as.vector(unlist(leaf_count_row))
+count_vector <- count_vector[count_vector != "count"]
+count_vector <- count_vector[count_vector != "1554"]
+count_vector <- as.numeric(count_vector)
+
+
+leaf_mass_row <- df_excel[1, ]
+mass_vector <- as.vector(unlist(leaf_mass_row))
+mass_vector <- mass_vector[mass_vector != "mass"]
+mass_vector <- mass_vector[mass_vector != "39.5"]
+mass_vector <- as.numeric(mass_vector)
+
+mass_per_leaf <- mass_vector / count_vector
+
+mass_per_area <- mass_vector / area_vector / count_vector  
+```
+
+```{R, echo=FALSE}
+quadrat_data <- data.frame(
+  Distance = distance_vector,
+  Area = area_vector,
+  Mass = mass_vector,
+  Count = count_vector,
+  MperL = mass_per_leaf,
+  MperA = mass_per_area
+)
+colnames(quadrat_data) <-
+c("Distance (m)", "Avg Area (cm²)", "Mass (g)", "Count","g/leaf", "g/cm²")
+print(quadrat_data, row.names = FALSE)
+```
+
+```{R, echo=FALSE}
+x <- 0:23
+y <- mass_vector[-(1:2)]
+z <- count_vector[-(1:2)]
+ar <- area_vector[-(1:2)]
+ml <- mass_per_leaf[-(1:2)]
+ma <- mass_per_area[-(1:2)]
+
+df_quadrat <- data.frame(
+  x = x,
+  y = y,
+  z = z,
+  ar = ar,
+  ml = ml,
+  ma = ma
+)
+```
+
+## Plot Leaf Count and Mass vs. Distance
+```{R, echo =FALSE}
+par(mar = c(5, 4, 4, 2) + 0.1, oma = c(0, 0, 0, 1))
+plot(x, y, type = "p", col = "blue", pch = 16, ylab = "", xlab = "Distance (m)", axes = TRUE)
+
+mtext("Mass (g)", side = 2, line = 2, col = "blue", cex = 1.2)  
+
+fit <- lm(log(y) ~ x)
+
+x_pred <- seq(min(x), max(x), length.out = 100)
+y_pred <- exp(predict(fit, newdata = data.frame(x = x_pred)))
+
+lines(x_pred, y_pred, col = "blue", type = "l")
+
+par(new = TRUE)
+plot(x, z, type = "p", col = "firebrick2", pch = 16, ylab = "", xlab = "", axes = FALSE)
+
+fit <- lm(log(z) ~ x)
+x_pred <- seq(min(x), max(x), length.out = 100)
+z_pred <- exp(predict(fit, newdata = data.frame(x = x_pred)))
+lines(x_pred, z_pred, col = "firebrick2", type = "l")
+
+mtext("Count", side = 4, line = 2, col = "firebrick2", cex = 1.2)  
+
+axis(4, col = "black", col.axis = "black", las = 1)  
+
+legend("topright", legend = c("Mass (g)", "Count"), col = c("blue", "firebrick2"), pch = 16)
+```
+
+## Plot Leaf Count vs. Mass
+```{R, echo=FALSE}
+plot(z, y, main = "", xlab = "", ylab = "", col = "maroon", pch = 16)
+
+fit <- lm(log(y) ~ z)
+
+z_pred <- seq(min(z), max(z), length.out = 100)
+y_pred <- exp(predict(fit, newdata = data.frame(z = z_pred)))
+
+lines(z_pred, y_pred, col = "maroon", type = "l")
+
+a <- exp(coef(fit)[1])
+b <- coef(fit)[2]
+eq <- sprintf("z = %.2f * exp(%.2fx)", a, b)
+text(3, max(y), eq, pos = 4, col = "black", cex = 0.8)
+```
+
+## Plot Area per Leaf vs. Distance
+```{R, echo=FALSE}
+df_4 <- data.frame(
+  x = distance_vector,
+  ar = area_vector,
+  ml = mass_per_leaf,
+  ma = mass_per_area
+)
+
+df_4$x <- as.numeric(as.character(df_4$x))
+
+model <- lm(ar ~ poly(x, degree = 2, raw = TRUE), data = df_4)
+
+plot(df_4$x, df_4$ar, main = "Area per Leaf vs. Distance from Main Colony Entrance", xlab = "Distance (m)", ylab = "Area per Leaf", col = "darkgreen", pch = 16)
+
+lines(df_4$x, predict(model), col = "darkgreen", type = "l")
+
+coefficients <- coef(model)
+
+format_sci_notation <- function(value, digits = 3) {
+  exponent <- floor(log10(abs(value)))
+  coefficient <- value / 10^exponent
+  return(paste0(format(signif(coefficient, digits = digits), nsmall = digits), "(10^-", abs(exponent),")"))
+}
+
+equation <- paste0("y = ", format(signif(coefficients[1], digits = 3)), 
+                  ifelse(coefficients[2] < 0, " - ", " + "), 
+                  format(abs(signif(coefficients[2], digits = 3))), "x", 
+                  ifelse(coefficients[3] < 0, " - ", " + "), 
+                  format_sci_notation(abs(coefficients[3])), "x²")
+
+text(min(df_4$x), max(df_4$ar), equation, pos = 4, col = "darkgreen")
+
+r_squared <- summary(model)$r.squared
+
+r_squared_text <- paste("R-squared =", round(r_squared, 3))
+text(min(df_4$x), max(df_4$ar) - 0.1 * diff(range(df_4$ar)), r_squared_text, pos = 4, col = "black")
+```
+
+## Plot Mass per Leaf vs. Distance
+```{R, echo=FALSE}
+# Fit a linear regression model
+model <- lm(ml ~ x, data = df_4)
+
+# Create a scatter plot
+plot(df_4$x, df_4$ml, main = "Mass per Leaf vs. Distance from Main Colony Entrance", xlab = "Distance (m)", ylab = "Mass per Leaf", col = "purple", pch = 16)
+
+# Add the line of best fit to the plot
+abline(model, col = "purple")
+
+# Extract coefficients
+coefficients <- coef(model)
+
+# Add the equation of the line
+equation <- paste("ml =", round(coefficients[1], 2), "+", round(coefficients[2], 2), "* x")
+text(min(df_4$x), max(df_4$ml), equation, pos = 4, col = "purple")
+
+# Calculate R-squared
+r_squared <- summary(model)$r.squared
+
+# Add R-squared value to the plot
+r_squared_text <- paste("R-squared =", round(r_squared, 3))
+text(min(df_4$x), max(df_4$ml) - 0.1 * diff(range(df_4$ml)), r_squared_text, pos = 4, col = "black")
+```
+
+### Plot Mass per Area vs. Distance
+```{R, echo=FALSE}
+model <- lm(ma ~ x, data = df_4)
+plot(df_4$x, df_4$ma, main = "Mass per Area vs. Distance from Main Colony Entrance", xlab = "Distance (m)", ylab = "Mass per Area", col = "orange", pch = 16)
+abline(model, col = "orange")
+coefficients <- coef(model)
+equation <- paste("y =", round(coefficients[1], 2), "+", round(coefficients[2], 2), "* x")
+text(min(df_4$x), max(df_4$ma), equation, pos = 4, col = "orange")
+r_squared <- summary(model)$r.squared
+r_squared_text <- paste("R-squared =", round(r_squared, 3))
+text(min(df_4$x), max(df_4$ma) - 0.1 * diff(range(df_4$ma)), r_squared_text, pos = 4, col = "black")
+```
+
+## Plot Average Area vs. Average Mass
+```{R, echo=FALSE}
+plot(df_quadrat$ar, df_quadrat$ml, xlab = "average area", ylab = "Mass per leaf", col = "pink4", pch = 16)
+```
+```{R, echo=FALSE}
+plot(df_quadrat$ar, df_quadrat$ma, xlab = "average area", ylab = "density or thickness (g/cm^2)", col = "pink4", pch = 16)
+```

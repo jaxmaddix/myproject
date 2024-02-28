@@ -13,7 +13,7 @@
 
 <meta name="date" content="2024-02-27" />
 
-<title>Area Analysis</title>
+<title>quadrat_analysis</title>
 
 <script src="site_libs/header-attrs-2.25/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -359,7 +359,7 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Area Analysis</h1>
+<h1 class="title toc-ignore">quadrat_analysis</h1>
 <h4 class="author">Jaxson Freund</h4>
 <h4 class="date">2024-02-27</h4>
 
@@ -428,10 +428,10 @@ changes </a>
 <div id="strongRMarkdownfilestronguncommittedchanges"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>The R Markdown file has unstaged changes. To know which version of
-the R Markdown file created these results, you’ll want to first commit
-it to the Git repo. If you’re still working on the analysis, you can
-ignore this warning. When you’re finished, you can run
+<p>The R Markdown is untracked by Git. To know which version of the R
+Markdown file created these results, you’ll want to first commit it to
+the Git repo. If you’re still working on the analysis, you can ignore
+this warning. When you’re finished, you can run
 <code>wflow_publish</code> to commit the R Markdown file and build the
 HTML.</p>
 </div>
@@ -440,15 +440,15 @@ HTML.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomjaxmaddixmyprojecttree28304cdcc906c4179256456ab961a415c436253btargetblank28304cda">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomjaxmaddixmyprojecttree3b92f5534096fd12f01428a35cbc6426611cd0a5targetblank3b92f55a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/jaxmaddix/myproject/tree/28304cdcc906c4179256456ab961a415c436253b" target="_blank">28304cd</a>
+<a href="https://github.com/jaxmaddix/myproject/tree/3b92f5534096fd12f01428a35cbc6426611cd0a5" target="_blank">3b92f55</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomjaxmaddixmyprojecttree28304cdcc906c4179256456ab961a415c436253btargetblank28304cda"
+id="strongRepositoryversionstrongahrefhttpsgithubcomjaxmaddixmyprojecttree3b92f5534096fd12f01428a35cbc6426611cd0a5targetblank3b92f55a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -458,7 +458,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/jaxmaddix/myproject/tree/28304cdcc906c4179256456ab961a415c436253b" target="_blank">28304cd</a>.
+<a href="https://github.com/jaxmaddix/myproject/tree/3b92f5534096fd12f01428a35cbc6426611cd0a5" target="_blank">3b92f55</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -475,17 +475,19 @@ were generated:
 Ignored files:
     Ignored:    .Rhistory
     Ignored:    .Rproj.user/
+    Ignored:    myproject/.Rhistory
     Ignored:    myproject/.Rproj.user/
 
 Untracked files:
-    Untracked:  analysis/first-analysis.Rmd
-    Untracked:  docs/first-analysis.html
-    Untracked:  docs/site_libs/font-awesome-6.4.2/
-    Untracked:  docs/site_libs/jqueryui-1.13.2/
-    Untracked:  docs/site_libs/tocify-1.9.1/
+    Untracked:  myproject/analysis/area_analysis.Rmd
+    Untracked:  myproject/analysis/quadrat_analysis.Rmd
+    Untracked:  myproject/figure/
+    Untracked:  myproject/quadrat_analysis.Rmd
+    Untracked:  myproject/quadrat_analysis.html
 
 Unstaged changes:
-    Modified:   myproject/analysis/first-analysis.Rmd
+    Deleted:    myproject/analysis/first-analysis.Rmd
+    Modified:   myproject/analysis/index.Rmd
 
 </code></pre>
 <p>
@@ -500,417 +502,68 @@ have uncommitted changes.
 <hr>
 </div>
 <div id="versions" class="tab-pane fade">
-
 <p>
-These are the previous versions of the repository in which changes were
-made to the R Markdown
-(<code>myproject/analysis/first-analysis.Rmd</code>) and HTML
-(<code>myproject/docs/first-analysis.html</code>) files. If you’ve
-configured a remote Git repository (see <code>?wflow_git_remote</code>),
-click on the hyperlinks in the table below to view the files as they
-were in that past version.
+There are no past versions. Publish this analysis with
+<code>wflow_publish()</code> to start tracking its development.
 </p>
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-File
-</th>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-<th>
-Message
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/jaxmaddix/myproject/28304cdcc906c4179256456ab961a415c436253b/myproject/docs/first-analysis.html" target="_blank">28304cd</a>
-</td>
-<td>
-Jaxson Freund
-</td>
-<td>
-2024-02-27
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/jaxmaddix/myproject/blob/7cac815005b4b60997c3db0df3b267d158df191e/myproject/analysis/first-analysis.Rmd" target="_blank">7cac815</a>
-</td>
-<td>
-Jaxson Freund
-</td>
-<td>
-2024-02-27
-</td>
-<td>
-Add my first analysis
-</td>
-</tr>
-</tbody>
-</table>
-</div>
 <hr>
 </div>
 </div>
 </div>
-<div id="context" class="section level2">
-<h2>Context</h2>
-<p>From January 1-15, 2024, I visited Costa Rica as a class trip. I
-conducted an observational study on foraging behavior of leafcutter
-ants. My goal is to assess qualities of leaves that are rejected far
-from the colony, vs. leaves that are carried all the way to the colony
-entrance and rejected at the doorstep.</p>
-</div>
 <div id="data" class="section level2">
 <h2>Data</h2>
-<pre><code># A tibble: 1,550 × 2
-   Distance  Area
-   &lt;fct&gt;    &lt;dbl&gt;
- 1 -2       0.781
- 2 -2       0.874
- 3 -2       1.45 
- 4 -2       0.443
- 5 -2       1.16 
- 6 -2       0.863
- 7 -2       0.81 
- 8 -2       1.05 
- 9 -2       1.03 
-10 -2       0.939
-# ℹ 1,540 more rows</code></pre>
+<pre><code> Distance (m) Avg Area (cm²) Mass (g) Count     g/leaf      g/cm²
+           -2      1.0075946      0.7    37 0.01891892 0.01877632
+           -1      1.2685682      4.0   132 0.03030303 0.02388759
+            0      1.3095806      4.0   124 0.03225806 0.02463236
+            1      1.2668134      3.9   136 0.02867647 0.02263670
+            2      1.2268774      3.7   107 0.03457944 0.02818492
+            3      1.2631379      2.5   116 0.02155172 0.01706205
+            4      1.1206974      1.2    76 0.01578947 0.01408897
+            5      1.2098148      2.6    82 0.03170732 0.02620841
+            6      1.1871860      1.0    43 0.02325581 0.01958902
+            7      0.9659348      0.6    46 0.01304348 0.01350348
+            8      1.1664694      2.8    98 0.02857143 0.02449394
+            9      1.1631364      0.5    22 0.02272727 0.01953965
+           10      1.0106136      1.4    88 0.01590909 0.01574201
+           11      1.1398406      1.8    69 0.02608696 0.02288650
+           12      1.1920952      0.5    21 0.02380952 0.01997284
+           13      1.2853053      2.1    95 0.02210526 0.01719845
+           14      1.1091429      1.3    70 0.01857143 0.01674395
+           15      1.1121111      0.3     9 0.03333333 0.02997302
+           16      1.2313409      0.9    44 0.02045455 0.01661160
+           17      1.3291778      1.3    45 0.02888889 0.02173441
+           18      1.2903333      0.2     9 0.02222222 0.01722208
+           19      1.1270667      0.3    15 0.02000000 0.01774518
+           20      1.9064706      0.8    17 0.04705882 0.02468374
+           21      1.6171429      0.2     7 0.02857143 0.01766784
+           22      1.5690476      0.4    21 0.01904762 0.01213961
+           23      1.5104000      0.5    25 0.02000000 0.01324153</code></pre>
 </div>
-<div id="visualize-the-data" class="section level2">
-<h2>Visualize the data</h2>
-<p><img src="figure/first-analysis.Rmd/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-3-1">
-Past versions of unnamed-chunk-3-1.png
-</button>
-</p>
-<div id="fig-unnamed-chunk-3-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/jaxmaddix/myproject/blob/28304cdcc906c4179256456ab961a415c436253b/myproject/docs/figure/first-analysis.Rmd/unnamed-chunk-3-1.png" target="_blank">28304cd</a>
-</td>
-<td>
-Jaxson Freund
-</td>
-<td>
-2024-02-27
-</td>
-</tr>
-</tbody>
-</table>
+<div id="plot-leaf-count-and-mass-vs.-distance" class="section level2">
+<h2>Plot Leaf Count and Mass vs. Distance</h2>
+<p><img src="figure/quadrat_analysis.Rmd/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="plot-leaf-count-vs.-mass" class="section level2">
+<h2>Plot Leaf Count vs. Mass</h2>
+<p><img src="figure/quadrat_analysis.Rmd/unnamed-chunk-5-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="plot-area-per-leaf-vs.-distance" class="section level2">
+<h2>Plot Area per Leaf vs. Distance</h2>
+<p><img src="figure/quadrat_analysis.Rmd/unnamed-chunk-6-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="plot-mass-per-leaf-vs.-distance" class="section level2">
+<h2>Plot Mass per Leaf vs. Distance</h2>
+<p><img src="figure/quadrat_analysis.Rmd/unnamed-chunk-7-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div id="plot-mass-per-area-vs.-distance" class="section level3">
+<h3>Plot Mass per Area vs. Distance</h3>
+<p><img src="figure/quadrat_analysis.Rmd/unnamed-chunk-8-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 </div>
-<p><img src="figure/first-analysis.Rmd/unnamed-chunk-3-2.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-3-2">
-Past versions of unnamed-chunk-3-2.png
-</button>
-</p>
-<div id="fig-unnamed-chunk-3-2" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/jaxmaddix/myproject/blob/28304cdcc906c4179256456ab961a415c436253b/myproject/docs/figure/first-analysis.Rmd/unnamed-chunk-3-2.png" target="_blank">28304cd</a>
-</td>
-<td>
-Jaxson Freund
-</td>
-<td>
-2024-02-27
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<p><img src="figure/first-analysis.Rmd/unnamed-chunk-3-3.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-3-3">
-Past versions of unnamed-chunk-3-3.png
-</button>
-</p>
-<div id="fig-unnamed-chunk-3-3" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/jaxmaddix/myproject/blob/28304cdcc906c4179256456ab961a415c436253b/myproject/docs/figure/first-analysis.Rmd/unnamed-chunk-3-3.png" target="_blank">28304cd</a>
-</td>
-<td>
-Jaxson Freund
-</td>
-<td>
-2024-02-27
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<p><img src="figure/first-analysis.Rmd/unnamed-chunk-3-4.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-3-4">
-Past versions of unnamed-chunk-3-4.png
-</button>
-</p>
-<div id="fig-unnamed-chunk-3-4" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/jaxmaddix/myproject/blob/28304cdcc906c4179256456ab961a415c436253b/myproject/docs/figure/first-analysis.Rmd/unnamed-chunk-3-4.png" target="_blank">28304cd</a>
-</td>
-<td>
-Jaxson Freund
-</td>
-<td>
-2024-02-27
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<div id="statistics" class="section level2">
-<h2>Statistics</h2>
-<pre><code>              Df Sum Sq Mean Sq F value   Pr(&gt;F)    
-Distance      25   27.8  1.1121   3.685 2.74e-09 ***
-Residuals   1524  459.9  0.3018                     
----
-Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<pre><code>$statistics
-    MSerror   Df     Mean       CV
-  0.3017987 1524 1.220206 45.02206
-
-$parameters
-   test   name.t ntr StudentizedRange alpha
-  Tukey Distance  26         5.210735  0.05
-
-$means
-        Area       std   r         se   Min   Max     Q25    Q50     Q75
--1 1.2685682 0.5440600 132 0.04781583 0.256 3.186 0.89475 1.2440 1.50225
--2 1.0075946 0.4666685  37 0.09031457 0.384 2.343 0.71300 0.8630 1.28900
-0  1.3095806 0.6564874 124 0.04933417 0.349 4.462 0.94325 1.2070 1.55200
-1  1.2668134 0.5776422 134 0.04745765 0.228 3.100 0.88350 1.1340 1.58075
-10 1.0106136 0.5150416  88 0.05856219 0.174 3.567 0.67525 0.9515 1.26750
-11 1.1398406 0.4386382  69 0.06613542 0.235 2.072 0.86000 1.0930 1.48900
-12 1.1920952 0.5417438  21 0.11988063 0.441 2.744 0.90900 1.0420 1.45900
-13 1.2853053 0.5317337  95 0.05636336 0.329 3.052 0.90550 1.1500 1.58600
-14 1.1091429 0.4891396  70 0.06566133 0.239 2.530 0.77425 1.0370 1.34800
-15 1.1121111 0.3901543   9 0.18312069 0.610 1.891 0.86600 1.1590 1.22000
-16 1.2313409 0.4054133  44 0.08281945 0.666 2.338 0.95600 1.1375 1.44300
-17 1.3291778 0.5662934  45 0.08189406 0.283 2.833 0.91800 1.3490 1.62900
-18 1.2903333 0.7899096   9 0.18312069 0.338 3.013 0.70400 1.3420 1.55700
-19 1.1270667 0.4003059  15 0.14184468 0.419 1.909 0.87600 1.0880 1.41900
-2  1.2268774 0.5430265 106 0.05335876 0.306 3.467 0.84100 1.1690 1.49575
-20 1.9064706 1.2458729  17 0.13323987 0.680 5.650 0.90000 1.6700 2.17000
-21 1.6171429 1.0047838   7 0.20763935 0.560 3.540 1.02500 1.2100 1.98000
-22 1.5690476 0.5954150  21 0.11988063 0.650 2.750 1.10000 1.3800 1.95000
-23 1.5104000 0.5356575  25 0.10987241 0.600 2.470 1.11000 1.6100 1.85000
-3  1.2631379 0.5508285 116 0.05100699 0.318 4.060 0.92625 1.2365 1.50200
-4  1.1206974 0.5026705  76 0.06301615 0.381 3.299 0.77125 1.0505 1.33225
-5  1.2098148 0.5112562  81 0.06104023 0.267 2.508 0.84400 1.1210 1.66300
-6  1.1871860 0.5744438  43 0.08377693 0.453 2.764 0.72350 1.0540 1.55500
-7  0.9659348 0.3553319  46 0.08099902 0.293 1.912 0.74200 0.9470 1.15825
-8  1.1664694 0.5291474  98 0.05549395 0.228 3.100 0.82975 1.0830 1.47700
-9  1.1631364 0.4310594  22 0.11712439 0.261 2.243 0.96475 1.1050 1.48250
-
-$comparison
-NULL
-
-$groups
-        Area groups
-20 1.9064706      a
-21 1.6171429     ab
-22 1.5690476     ab
-23 1.5104000     ab
-17 1.3291778      b
-0  1.3095806      b
-18 1.2903333      b
-13 1.2853053      b
--1 1.2685682      b
-1  1.2668134      b
-3  1.2631379      b
-16 1.2313409      b
-2  1.2268774      b
-5  1.2098148      b
-12 1.1920952      b
-6  1.1871860      b
-8  1.1664694      b
-9  1.1631364      b
-11 1.1398406      b
-19 1.1270667      b
-4  1.1206974      b
-15 1.1121111      b
-14 1.1091429      b
-10 1.0106136      b
--2 1.0075946      b
-7  0.9659348      b
-
-attr(,&quot;class&quot;)
-[1] &quot;group&quot;</code></pre>
-</div>
-<div id="outliers-removed" class="section level2">
-<h2>Outliers removed</h2>
-<p><img src="figure/first-analysis.Rmd/unnamed-chunk-7-1.png" width="672" style="display: block; margin: auto;" /><img src="figure/first-analysis.Rmd/unnamed-chunk-7-2.png" width="672" style="display: block; margin: auto;" /></p>
-<pre><code>              Df Sum Sq Mean Sq F value   Pr(&gt;F)    
-Distance      25   22.5  0.8992   4.168 3.54e-11 ***
-Residuals   1481  319.5  0.2158                     
----
-Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<pre><code>$statistics
-    MSerror   Df     Mean       CV
-  0.2157544 1481 1.171828 39.63838
-
-$parameters
-   test   name.t ntr StudentizedRange alpha
-  Tukey Distance  26         5.211023  0.05
-
-$means
-        Area       std   r         se   Min   Max     Q25    Q50     Q75
--1 1.2076693 0.4538322 127 0.04121715 0.256 2.317 0.87250 1.2200 1.47100
--2 0.9705000 0.4142883  36 0.07741562 0.384 1.949 0.70525 0.8580 1.20575
-0  1.2087288 0.4711989 118 0.04276011 0.349 2.424 0.91700 1.1655 1.49425
-1  1.2189231 0.5154114 130 0.04073879 0.228 2.623 0.88000 1.1230 1.51950
-10 0.9641163 0.4098319  86 0.05008764 0.174 1.876 0.66975 0.9385 1.22225
-11 1.1398406 0.4386382  69 0.05591847 0.235 2.072 0.86000 1.0930 1.48900
-12 1.1145000 0.4193290  20 0.10386395 0.441 2.049 0.87925 1.0075 1.44325
-13 1.2307174 0.4430698  92 0.04842682 0.329 2.580 0.90375 1.1405 1.52025
-14 1.0506418 0.4104588  67 0.05674694 0.239 2.015 0.76700 0.9880 1.31500
-15 1.0147500 0.2765247   8 0.16422333 0.610 1.382 0.81450 1.1045 1.18325
-16 1.2056047 0.3720695  43 0.07083463 0.666 2.168 0.95500 1.1320 1.39300
-17 1.2950000 0.5237922  44 0.07002506 0.283 2.454 0.91175 1.3330 1.60275
-18 1.0750000 0.4859644   8 0.16422333 0.338 1.628 0.67050 1.2000 1.44150
-19 1.1270667 0.4003059  15 0.11993176 0.419 1.909 0.87600 1.0880 1.41900
-2  1.1928654 0.4841284 104 0.04554736 0.306 2.410 0.83875 1.1560 1.46500
-20 1.6725000 0.8142604  16 0.11612343 0.680 3.260 0.89250 1.6450 2.12500
-21 1.2966667 0.5905816   6 0.18962876 0.560 2.150 0.94250 1.2000 1.66000
-22 1.5690476 0.5954150  21 0.10136084 0.650 2.750 1.10000 1.3800 1.95000
-23 1.5104000 0.5356575  25 0.09289874 0.600 2.470 1.11000 1.6100 1.85000
-3  1.2126637 0.4487834 113 0.04369589 0.318 2.363 0.92100 1.2180 1.48800
-4  1.0555205 0.3827520  73 0.05436488 0.381 2.024 0.76300 1.0210 1.23400
-5  1.2098148 0.5112562  81 0.05161041 0.267 2.508 0.84400 1.1210 1.66300
-6  1.1871860 0.5744438  43 0.07083463 0.453 2.764 0.72350 1.0540 1.55500
-7  0.9449111 0.3291450  45 0.06924263 0.293 1.803 0.73400 0.9460 1.14100
-8  1.1166316 0.4525082  95 0.04765605 0.228 2.288 0.82200 1.0760 1.44900
-9  1.1631364 0.4310594  22 0.09903039 0.261 2.243 0.96475 1.1050 1.48250
-
-$comparison
-NULL
-
-$groups
-        Area groups
-20 1.6725000      a
-22 1.5690476     ab
-23 1.5104000    abc
-21 1.2966667   abcd
-17 1.2950000   abcd
-13 1.2307174   abcd
-1  1.2189231    bcd
-3  1.2126637    bcd
-5  1.2098148    bcd
-0  1.2087288    bcd
--1 1.2076693    bcd
-16 1.2056047    bcd
-2  1.1928654    bcd
-6  1.1871860    bcd
-9  1.1631364    bcd
-11 1.1398406     cd
-19 1.1270667     cd
-8  1.1166316      d
-12 1.1145000      d
-18 1.0750000      d
-4  1.0555205      d
-14 1.0506418      d
-15 1.0147500      d
--2 0.9705000      d
-10 0.9641163      d
-7  0.9449111      d
-
-attr(,&quot;class&quot;)
-[1] &quot;group&quot;</code></pre>
+<div id="plot-average-area-vs.-average-mass" class="section level2">
+<h2>Plot Average Area vs. Average Mass</h2>
+<p><img src="figure/quadrat_analysis.Rmd/unnamed-chunk-9-1.png" width="672" style="display: block; margin: auto;" />
+<img src="figure/quadrat_analysis.Rmd/unnamed-chunk-10-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 
 
