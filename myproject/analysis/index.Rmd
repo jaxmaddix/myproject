@@ -12,4 +12,4 @@ editor_options:
 
 [Quadrat analysis](quadrat_analysis.html)
 
-[Notes](notes.Rmd)
+[Notes](notes.html)

@@ -9,9 +9,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
+<meta name="author" content="Jaxson Freund" />
 
+<meta name="date" content="2024-02-28" />
 
-<title>Home</title>
+<title>Notes</title>
 
 <script src="site_libs/header-attrs-2.25/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -29,6 +31,9 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -231,6 +236,69 @@ $(document).ready(function () {
 
 
 
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
 
 </head>
 
@@ -238,6 +306,16 @@ $(document).ready(function () {
 
 
 <div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -281,7 +359,9 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Home</h1>
+<h1 class="title toc-ignore">Notes</h1>
+<h4 class="author">Jaxson Freund</h4>
+<h4 class="date">2024-02-28</h4>
 
 </div>
 
@@ -348,10 +428,10 @@ changes </a>
 <div id="strongRMarkdownfilestronguncommittedchanges"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>The R Markdown file has unstaged changes. To know which version of
-the R Markdown file created these results, you’ll want to first commit
-it to the Git repo. If you’re still working on the analysis, you can
-ignore this warning. When you’re finished, you can run
+<p>The R Markdown is untracked by Git. To know which version of the R
+Markdown file created these results, you’ll want to first commit it to
+the Git repo. If you’re still working on the analysis, you can ignore
+this warning. When you’re finished, you can run
 <code>wflow_publish</code> to commit the R Markdown file and build the
 HTML.</p>
 </div>
@@ -360,15 +440,15 @@ HTML.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomjaxmaddixmyprojecttreea2c026bc225535d268451d2fc4467eef0d60c805targetblanka2c026ba">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomjaxmaddixmyprojecttree8f5b70fdc2ffa4037f06323dfcea0aa028d8146etargetblank8f5b70fa">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/jaxmaddix/myproject/tree/a2c026bc225535d268451d2fc4467eef0d60c805" target="_blank">a2c026b</a>
+<a href="https://github.com/jaxmaddix/myproject/tree/8f5b70fdc2ffa4037f06323dfcea0aa028d8146e" target="_blank">8f5b70f</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomjaxmaddixmyprojecttreea2c026bc225535d268451d2fc4467eef0d60c805targetblanka2c026ba"
+id="strongRepositoryversionstrongahrefhttpsgithubcomjaxmaddixmyprojecttree8f5b70fdc2ffa4037f06323dfcea0aa028d8146etargetblank8f5b70fa"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -378,7 +458,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/jaxmaddix/myproject/tree/a2c026bc225535d268451d2fc4467eef0d60c805" target="_blank">a2c026b</a>.
+<a href="https://github.com/jaxmaddix/myproject/tree/8f5b70fdc2ffa4037f06323dfcea0aa028d8146e" target="_blank">8f5b70f</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -417,285 +497,36 @@ have uncommitted changes.
 <hr>
 </div>
 <div id="versions" class="tab-pane fade">
-
 <p>
-These are the previous versions of the repository in which changes were
-made to the R Markdown (<code>myproject/analysis/index.Rmd</code>) and
-HTML (<code>myproject/docs/index.html</code>) files. If you’ve
-configured a remote Git repository (see <code>?wflow_git_remote</code>),
-click on the hyperlinks in the table below to view the files as they
-were in that past version.
+There are no past versions. Publish this analysis with
+<code>wflow_publish()</code> to start tracking its development.
 </p>
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-File
-</th>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-<th>
-Message
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/jaxmaddix/myproject/a2c026bc225535d268451d2fc4467eef0d60c805/myproject/docs/index.html" target="_blank">a2c026b</a>
-</td>
-<td>
-Jaxson Freund
-</td>
-<td>
-2024-02-28
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/jaxmaddix/myproject/blob/7c6e1ceef91465ae8b760c038fee167bf0b84919/myproject/analysis/index.Rmd" target="_blank">7c6e1ce</a>
-</td>
-<td>
-Jaxson Freund
-</td>
-<td>
-2024-02-28
-</td>
-<td>
-wflow_publish(all = TRUE)
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/jaxmaddix/myproject/7c6e1ceef91465ae8b760c038fee167bf0b84919/myproject/docs/index.html" target="_blank">7c6e1ce</a>
-</td>
-<td>
-Jaxson Freund
-</td>
-<td>
-2024-02-28
-</td>
-<td>
-wflow_publish(all = TRUE)
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/jaxmaddix/myproject/8f5b70fdc2ffa4037f06323dfcea0aa028d8146e/myproject/docs/index.html" target="_blank">8f5b70f</a>
-</td>
-<td>
-Jaxson Freund
-</td>
-<td>
-2024-02-27
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/jaxmaddix/myproject/blob/47dfd4bf6bc18b87cb9a840e19c06e8b390e6c18/myproject/analysis/index.Rmd" target="_blank">47dfd4b</a>
-</td>
-<td>
-Jaxson Freund
-</td>
-<td>
-2024-02-27
-</td>
-<td>
-wflow_publish(all = TRUE)
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/jaxmaddix/myproject/47dfd4bf6bc18b87cb9a840e19c06e8b390e6c18/myproject/docs/index.html" target="_blank">47dfd4b</a>
-</td>
-<td>
-Jaxson Freund
-</td>
-<td>
-2024-02-27
-</td>
-<td>
-wflow_publish(all = TRUE)
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/jaxmaddix/myproject/blob/056c039747a64033296d495cdf3718eaaee1d23b/myproject/analysis/index.Rmd" target="_blank">056c039</a>
-</td>
-<td>
-Jaxson Freund
-</td>
-<td>
-2024-02-27
-</td>
-<td>
-R
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/jaxmaddix/myproject/056c039747a64033296d495cdf3718eaaee1d23b/myproject/docs/index.html" target="_blank">056c039</a>
-</td>
-<td>
-Jaxson Freund
-</td>
-<td>
-2024-02-27
-</td>
-<td>
-R
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/jaxmaddix/myproject/3b92f5534096fd12f01428a35cbc6426611cd0a5/myproject/docs/index.html" target="_blank">3b92f55</a>
-</td>
-<td>
-Jaxson Freund
-</td>
-<td>
-2024-02-27
-</td>
-<td>
-R
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/jaxmaddix/myproject/28304cdcc906c4179256456ab961a415c436253b/myproject/docs/index.html" target="_blank">28304cd</a>
-</td>
-<td>
-Jaxson Freund
-</td>
-<td>
-2024-02-27
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/jaxmaddix/myproject/blob/7cac815005b4b60997c3db0df3b267d158df191e/myproject/analysis/index.Rmd" target="_blank">7cac815</a>
-</td>
-<td>
-Jaxson Freund
-</td>
-<td>
-2024-02-27
-</td>
-<td>
-Add my first analysis
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/jaxmaddix/myproject/blob/228a063dce6dede34722d6d7faeb3a14e97d88d9/myproject/analysis/index.Rmd" target="_blank">228a063</a>
-</td>
-<td>
-Jaxson Freund
-</td>
-<td>
-2024-02-22
-</td>
-<td>
-R
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/jaxmaddix/myproject/83bed13611de63023861de0183a64a6d1a798f98/myproject/docs/index.html" target="_blank">83bed13</a>
-</td>
-<td>
-Jaxson Freund
-</td>
-<td>
-2024-02-22
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/jaxmaddix/myproject/7a9759ba76def9d40ca28ba0e444fccc37cfd3b0/myproject/docs/index.html" target="_blank">7a9759b</a>
-</td>
-<td>
-Jaxson Freund
-</td>
-<td>
-2024-02-22
-</td>
-<td>
-Build site.
-</td>
-</tr>
-</tbody>
-</table>
-</div>
 <hr>
 </div>
 </div>
 </div>
-<p><a href="area_analysis.html">Individual leaf analysis</a></p>
-<p><a href="quadrat_analysis.html">Quadrat analysis</a></p>
-<p><a href="notes.html">Notes</a></p>
+<div id="selection-factors" class="section level2">
+<h2>Selection factors</h2>
+<ul>
+<li>leaf type (based on current fungus needs?)</li>
+<li>chemical</li>
+<li>leaf age</li>
+</ul>
+</div>
+<div id="selection-farther-from-colony" class="section level2">
+<h2>Selection farther from colony</h2>
+<ul>
+<li>decisions made at/near tree</li>
+<li>observations at La Cotinga</li>
+</ul>
+</div>
+<div id="to-do" class="section level2">
+<h2>To Do</h2>
+<ul>
+<li>get Kiki’s data for comparison to un-rejected leaves</li>
+<li>look at videos</li>
+</ul>
+</div>
 
 
 <!-- Adjust MathJax settings so that all math formulae are shown using
@@ -713,6 +544,8 @@ footer is added to webpages before the MathJax javascript. -->
 
 
 
+</div>
+</div>
 
 </div>
 
@@ -745,6 +578,35 @@ $(document).ready(function () {
 
 <!-- code folding -->
 
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
