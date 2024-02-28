@@ -11,3 +11,5 @@ editor_options:
 [Individual leaf analysis](area_analysis.html)
 
 [Quadrat analysis](quadrat_analysis.html)
+
+[Notes](notes.Rmd)
