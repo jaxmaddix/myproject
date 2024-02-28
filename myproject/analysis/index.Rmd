@@ -8,6 +8,6 @@ editor_options:
   chunk_output_type: console
 ---
 
-Click on this [link](area_analysis.html) to see my analysis of leaf areas.
+[Individual leaf analysis](area_analysis.html)
 
-Click on this [link](quadrat_analysis.html) to see the analysis quadrats.
+[Quadrat analysis](quadrat_analysis.html)
