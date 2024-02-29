@@ -4,9 +4,10 @@ site: workflowr::wflow_site
 output:
   workflowr::wflow_html:
     toc: false
+    css:  "css.styles"
 editor_options:
   chunk_output_type: console
-css:  css.styles
+
 ---
 
 ## Context
