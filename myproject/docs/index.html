@@ -70,7 +70,7 @@ if (window.hljs) {
 
 
 
-<link rel="stylesheet" href="css.styles" type="text/css" />
+<link rel="stylesheet" href="assets/css.styles.css" type="text/css" />
 
 
 
@@ -290,7 +290,7 @@ $(document).ready(function () {
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-ok text-success"
+workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -301,8 +301,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
-</a>
+class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -315,9 +315,9 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 2
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 1
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 0
+aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong> <code>myproject/</code> <span
@@ -340,33 +340,36 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
-<span class="glyphicon glyphicon-ok text-success"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
-</a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
+changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate"
+<div id="strongRMarkdownfilestronguncommittedchanges"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git
-repository, you know the exact version of the code that produced these
-results.</p>
+<p>The R Markdown file has unstaged changes. To know which version of
+the R Markdown file created these results, you’ll want to first commit
+it to the Git repo. If you’re still working on the analysis, you can
+ignore this warning. When you’re finished, you can run
+<code>wflow_publish</code> to commit the R Markdown file and build the
+HTML.</p>
 </div>
 </div>
 </div>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomjaxmaddixmyprojecttree4bdd518cf008758c754cc0d210f22e58b1ad5d84targetblank4bdd518a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomjaxmaddixmyprojecttree1e7a281119f20d75715cb1bbbc495d66b7fee996targetblank1e7a281a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/jaxmaddix/myproject/tree/4bdd518cf008758c754cc0d210f22e58b1ad5d84" target="_blank">4bdd518</a>
+<a href="https://github.com/jaxmaddix/myproject/tree/1e7a281119f20d75715cb1bbbc495d66b7fee996" target="_blank">1e7a281</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomjaxmaddixmyprojecttree4bdd518cf008758c754cc0d210f22e58b1ad5d84targetblank4bdd518a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomjaxmaddixmyprojecttree1e7a281119f20d75715cb1bbbc495d66b7fee996targetblank1e7a281a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -376,7 +379,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/jaxmaddix/myproject/tree/4bdd518cf008758c754cc0d210f22e58b1ad5d84" target="_blank">4bdd518</a>.
+<a href="https://github.com/jaxmaddix/myproject/tree/1e7a281119f20d75715cb1bbbc495d66b7fee996" target="_blank">1e7a281</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -397,6 +400,9 @@ Ignored files:
     Ignored:    myproject/.DS_Store
     Ignored:    myproject/.Rhistory
     Ignored:    myproject/.Rproj.user/
+
+Unstaged changes:
+    Modified:   myproject/analysis/index.Rmd
 
 </code></pre>
 <p>
@@ -442,6 +448,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/jaxmaddix/myproject/1e7a281119f20d75715cb1bbbc495d66b7fee996/myproject/docs/index.html" target="_blank">1e7a281</a>
+</td>
+<td>
+Jaxson Freund
+</td>
+<td>
+2024-02-29
+</td>
+<td>
+R
+</td>
+</tr>
 <tr>
 <td>
 html
