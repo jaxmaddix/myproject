@@ -6,9 +6,14 @@ output:
     toc: false
 editor_options:
   chunk_output_type: console
+css:  css.styles
 ---
+
 ## Context
-From January 1-15, 2024, I visited Costa Rica as a class trip. I conducted an observational study on foraging behavior of leafcutter ants.  My goal is to assess qualities of leaves that are rejected far from the colony, vs. leaves that are carried all the way to the colony entrance and rejected at the doorstep.
+
+From January 1-15, 2024, I visited Costa Rica as a class trip. I conducted an observational study on foraging behavior of leafcutter ants. My goal is to assess qualities of leaves that are rejected far from the colony, vs. leaves that are carried all the way to the colony entrance and rejected at the doorstep.
+
+![*Atta cephalotes*](assets/google_image.jpeg)
 
 [Individual leaf analysis](area_analysis.html)
 
