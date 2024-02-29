@@ -14,7 +14,9 @@ editor_options:
 ## Selection farther from colony
 * decisions made at/near tree
 * observations at La Cotinga
+* trails can be hundreds of meters long
 
 ## To Do
 * get Kiki's data for comparison to un-rejected leaves
 * look at videos
+* figure out what species it was
