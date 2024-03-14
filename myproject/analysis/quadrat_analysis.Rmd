@@ -126,7 +126,7 @@ legend("topright", legend = c("Mass (g)", "Count"), col = c("blue", "firebrick2"
 
 ## Plot Leaf Count vs. Mass
 ```{R, echo=FALSE}
-plot(z, y, main = "", xlab = "", ylab = "", col = "maroon", pch = 16)
+plot(z, y, main = "", xlab = "Count", ylab = "Mass (g)", col = "maroon", pch = 16)
 
 fit <- lm(log(y) ~ z)
 
@@ -137,7 +137,7 @@ lines(z_pred, y_pred, col = "maroon", type = "l")
 
 a <- exp(coef(fit)[1])
 b <- coef(fit)[2]
-eq <- sprintf("z = %.2f * exp(%.2fx)", a, b)
+eq <- sprintf("y=0.29e^(0.02x)")
 text(3, max(y), eq, pos = 4, col = "black", cex = 0.8)
 ```
 

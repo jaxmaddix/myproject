@@ -17,7 +17,8 @@ library(agricolae)
 library(purrr)
 library(readxl)
 library(openxlsx)
-
+library(ggdist)
+library(scales)
 
 df <- read_xlsx("~/Desktop/Spring 2024/Field Ecology Lab/Leafcutters Jan 2024/Excel Sheets/No statistics.xlsx")
 
@@ -38,7 +39,7 @@ print(df_long_nona)
 ```
 
 ## Visualize the data
-```{R, echo=FALSE}
+```{R}
 # box  and whisker
 ggplot(df_long_nona, aes(x = Distance, y = Area)) +
   geom_boxplot() +
@@ -61,10 +62,11 @@ ggplot(df_long_nona, aes(x = Distance, y = Area)) +
         panel.grid.major.x = element_line(color = "white")) +
   scale_y_continuous(breaks = seq(0, max(df_long_nona$Area), by = 0.5))
 
+
 # violin plot
 ggplot(df_long_nona, aes(x = Area, y = Distance)) +
   geom_violin() +
-  geom_sina(color = "darkgreen", alpha = 0.5) +  # Use geom_sina for adjusted jitter
+  geom_sina(color = "green4", alpha = 0.5) +  
   labs(title = "",
        x = "Leaf Surface Area (cm^2)",
        y = "Distance from Colony Main Entrance (m)") +
@@ -74,6 +76,38 @@ ggplot(df_long_nona, aes(x = Area, y = Distance)) +
   scale_x_continuous(breaks = seq(0, max(df_long_nona$Area), by = 0.5)) +
   coord_flip()
 
+# Assuming df_long_nona is your original data frame
+ggplot(df_long_nona, aes(x = Area, y = Distance)) +
+  geom_violin() +
+  geom_sina(color = "green4", alpha = 0.5) +
+  
+  # Calculate mean distances and add black dots
+  stat_summary(
+    fun.data = "mean_cl_normal",
+    geom = "point",
+    color = "black",
+    size = 2.5,
+    position = position_nudge(x = 0.15)  # Adjust the nudge value as needed
+  ) +
+  
+  labs(
+    title = "",
+    x = "Leaf Surface Area (cm^2)",
+    y = "Distance from Colony Main Entrance (m)"
+  ) +
+  
+  theme(
+    panel.background = element_rect(fill = "white"),
+    panel.grid = element_line(color = "white"),
+    panel.grid.major.y = element_line(color = "white")
+  ) +
+  
+  scale_x_continuous(breaks = seq(0, max(df_long_nona$Area), by = 0.5)) +
+  coord_flip()
+```
+
+
+```{R}
 # bar chart
 summary_data <- df_long_nona %>%
   group_by(Distance) %>%
