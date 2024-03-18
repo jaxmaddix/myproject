@@ -104,6 +104,9 @@ mtext("Mass (g)", side = 2, line = 2, col = "blue", cex = 1.2)
 
 fit <- lm(log(y) ~ x)
 
+# Print R-squared value for the blue line
+summary(fit)$r.squared
+
 x_pred <- seq(min(x), max(x), length.out = 100)
 y_pred <- exp(predict(fit, newdata = data.frame(x = x_pred)))
 
@@ -113,6 +116,9 @@ par(new = TRUE)
 plot(x, z, type = "p", col = "firebrick2", pch = 16, ylab = "", xlab = "", axes = FALSE)
 
 fit <- lm(log(z) ~ x)
+
+# Print R-squared value for the blue line
+summary(fit)$r.squared
 x_pred <- seq(min(x), max(x), length.out = 100)
 z_pred <- exp(predict(fit, newdata = data.frame(x = x_pred)))
 lines(x_pred, z_pred, col = "firebrick2", type = "l")
@@ -129,6 +135,8 @@ legend("topright", legend = c("Mass (g)", "Count"), col = c("blue", "firebrick2"
 plot(z, y, main = "", xlab = "Count", ylab = "Mass (g)", col = "maroon", pch = 16)
 
 fit <- lm(log(y) ~ z)
+# Print R-squared value for the blue line
+summary(fit)$r.squared
 
 z_pred <- seq(min(z), max(z), length.out = 100)
 y_pred <- exp(predict(fit, newdata = data.frame(z = z_pred)))
