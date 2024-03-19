@@ -290,7 +290,7 @@ $(document).ready(function () {
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-ok text-success"
+workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -301,8 +301,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
-</a>
+class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -311,13 +311,13 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2024-03-18
+<strong>Last updated:</strong> 2024-03-19
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 2
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 1
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 0
+aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong> <code>myproject/</code> <span
@@ -340,33 +340,36 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
-<span class="glyphicon glyphicon-ok text-success"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
-</a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
+changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate"
+<div id="strongRMarkdownfilestronguncommittedchanges"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git
-repository, you know the exact version of the code that produced these
-results.</p>
+<p>The R Markdown file has unstaged changes. To know which version of
+the R Markdown file created these results, you’ll want to first commit
+it to the Git repo. If you’re still working on the analysis, you can
+ignore this warning. When you’re finished, you can run
+<code>wflow_publish</code> to commit the R Markdown file and build the
+HTML.</p>
 </div>
 </div>
 </div>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomjaxmaddixmyprojecttreefdb413bc96d2e190415d5e3422c35fa5aa6cde33targetblankfdb413ba">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomjaxmaddixmyprojecttreebc609671cda8c6636b411788b4caa6c9e44292fbtargetblankbc60967a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/jaxmaddix/myproject/tree/fdb413bc96d2e190415d5e3422c35fa5aa6cde33" target="_blank">fdb413b</a>
+<a href="https://github.com/jaxmaddix/myproject/tree/bc609671cda8c6636b411788b4caa6c9e44292fb" target="_blank">bc60967</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomjaxmaddixmyprojecttreefdb413bc96d2e190415d5e3422c35fa5aa6cde33targetblankfdb413ba"
+id="strongRepositoryversionstrongahrefhttpsgithubcomjaxmaddixmyprojecttreebc609671cda8c6636b411788b4caa6c9e44292fbtargetblankbc60967a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -376,7 +379,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/jaxmaddix/myproject/tree/fdb413bc96d2e190415d5e3422c35fa5aa6cde33" target="_blank">fdb413b</a>.
+<a href="https://github.com/jaxmaddix/myproject/tree/bc609671cda8c6636b411788b4caa6c9e44292fb" target="_blank">bc60967</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -397,6 +400,9 @@ Ignored files:
     Ignored:    myproject/.DS_Store
     Ignored:    myproject/.Rhistory
     Ignored:    myproject/.Rproj.user/
+
+Unstaged changes:
+    Modified:   myproject/analysis/index.Rmd
 
 </code></pre>
 <p>
@@ -442,6 +448,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/jaxmaddix/myproject/bc609671cda8c6636b411788b4caa6c9e44292fb/myproject/docs/index.html" target="_blank">bc60967</a>
+</td>
+<td>
+Jaxson Freund
+</td>
+<td>
+2024-03-18
+</td>
+<td>
+R
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -978,22 +1001,14 @@ Build site.
 </div>
 <div id="context" class="section level2">
 <h2>Context</h2>
-<div class="float">
-<img src="assets/google_image.jpeg"
-style="float:right; margin-left: 5%; fig-align:right; width:40%;"
-fig-alt="&quot;*Atta cephalotes* lifting a cut leaf fragment"
-alt="Atta cephalotes" />
-<div class="figcaption"><em>Atta cephalotes</em></div>
-</div>
+<p><img src="assets/google_image.jpeg"
+style="float:right; margin-left: 5%; fig-align:right; width:30%;"
+fig-alt="&quot;*Atta cephalotes* lifting a cut leaf fragment" /></p>
 <p>From January 1-15, 2024, I visited Costa Rica as a class trip. I
 conducted an observational study on foraging behavior of leafcutter
 ants. My goal is to assess qualities of leaves that are rejected far
 from the colony, vs. leaves that are carried all the way to the colony
 entrance and rejected at the doorstep.</p>
-<div class="float">
-<img src="assets/google_image.jpeg" alt="Atta cephalotes" />
-<div class="figcaption"><em>Atta cephalotes</em></div>
-</div>
 <p><a href="area_analysis.html">Individual leaf analysis</a></p>
 <p><a href="quadrat_analysis.html">Quadrat analysis</a></p>
 <p><a href="notes.html">Notes</a></p>
