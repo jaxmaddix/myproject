@@ -20,4 +20,3 @@ From January 1-15, 2024, I visited Costa Rica as a class trip. I conducted an ob
 
 [Quadrat analysis](quadrat_analysis.html)
 
-[Notes](notes.html)

@@ -98,9 +98,9 @@ df_quadrat <- data.frame(
 ## Plot Leaf Count and Mass vs. Distance
 ```{R, echo =FALSE}
 par(mar = c(5, 4, 4, 2) + 0.1, oma = c(0, 0, 0, 1))
-plot(x, y, type = "p", col = "blue", pch = 16, ylab = "", xlab = "Distance (m)", axes = TRUE)
+plot(x, y, type = "p", col = "#298c8c", pch = 16, ylab = "", xlab = "Distance (m)", axes = TRUE)
 
-mtext("Mass (g)", side = 2, line = 2, col = "blue", cex = 1.2)  
+mtext("Mass (g)", side = 2, line = 2, col = "#298c8c", cex = 1.2)  
 
 fit <- lm(log(y) ~ x)
 
@@ -110,10 +110,10 @@ summary(fit)$r.squared
 x_pred <- seq(min(x), max(x), length.out = 100)
 y_pred <- exp(predict(fit, newdata = data.frame(x = x_pred)))
 
-lines(x_pred, y_pred, col = "blue", type = "l")
+lines(x_pred, y_pred, col = "#298c8c", type = "l")
 
 par(new = TRUE)
-plot(x, z, type = "p", col = "firebrick2", pch = 16, ylab = "", xlab = "", axes = FALSE)
+plot(x, z, type = "p", col = "#f1a226", pch = 16, ylab = "", xlab = "", axes = FALSE)
 
 fit <- lm(log(z) ~ x)
 
@@ -121,13 +121,13 @@ fit <- lm(log(z) ~ x)
 summary(fit)$r.squared
 x_pred <- seq(min(x), max(x), length.out = 100)
 z_pred <- exp(predict(fit, newdata = data.frame(x = x_pred)))
-lines(x_pred, z_pred, col = "firebrick2", type = "l")
+lines(x_pred, z_pred, col = "#f1a226", type = "l")
 
-mtext("Count", side = 4, line = 2, col = "firebrick2", cex = 1.2)  
+mtext("Count", side = 4, line = 2, col = "#f1a226", cex = 1.2)  
 
 axis(4, col = "black", col.axis = "black", las = 1)  
 
-legend("topright", legend = c("Mass (g)", "Count"), col = c("blue", "firebrick2"), pch = 16)
+legend("topright", legend = c("Mass (g)", "Count"), col = c("#298c8c", "#f1a226"), pch = 16)
 ```
 
 ## Plot Leaf Count vs. Mass

@@ -1,0 +1,127 @@
+---
+title: "chart_edits"
+format: html
+editor: visual
+---
+
+## Data
+
+```{R, echo=FALSE, include=FALSE}
+library(tidyverse)
+library(readxl)
+library(ggplot2)
+library(ggforce)
+library(dplyr)
+library(agricolae)
+library(purrr)
+library(readxl)
+library(openxlsx)
+
+
+df <- read_xlsx("~/Desktop/Spring 2024/Field Ecology Lab/Leafcutters Jan 2024/Excel Sheets/No statistics.xlsx")
+
+
+df_long <- tidyr::gather(df, key = "Distance", value = "Area")
+
+df_long$Distance <- as.character(df_long$Distance)
+
+df_long_nona <- df_long[complete.cases(df_long$Area), ]
+
+df_long_nona$Distance <- as.character(df_long_nona$Distance)
+
+df_long_nona$Distance <- factor(df_long_nona$Distance, levels = unique(df_long_nona$Distance))
+
+summary_data <- df_long_nona %>%
+  group_by(Distance) %>%
+  summarize(Mean = mean(Area, na.rm = TRUE),
+            SE = sd(Area, na.rm = TRUE) / sqrt(sum(!is.na(Area))))
+area_vector <- summary_data$Mean
+distance_vector <- summary_data$Distance
+
+mass_count_excel_file_path <- "~/Desktop/Spring 2024/Field Ecology Lab/Leafcutters Jan 2024/Excel Sheets/Area Data.xlsx"
+
+df_excel <- read_excel(mass_count_excel_file_path)
+
+leaf_count_row <- df_excel[2, ]
+count_vector <- as.vector(unlist(leaf_count_row))
+count_vector <- count_vector[count_vector != "count"]
+count_vector <- count_vector[count_vector != "1554"]
+count_vector <- as.numeric(count_vector)
+
+
+leaf_mass_row <- df_excel[1, ]
+mass_vector <- as.vector(unlist(leaf_mass_row))
+mass_vector <- mass_vector[mass_vector != "mass"]
+mass_vector <- mass_vector[mass_vector != "39.5"]
+mass_vector <- as.numeric(mass_vector)
+
+mass_per_leaf <- mass_vector / count_vector
+
+mass_per_area <- mass_vector / area_vector / count_vector  
+```
+
+```{R, echo=FALSE}
+quadrat_data <- data.frame(
+  Distance = distance_vector,
+  Area = area_vector,
+  Mass = mass_vector,
+  Count = count_vector,
+  MperL = mass_per_leaf,
+  MperA = mass_per_area
+)
+colnames(quadrat_data) <-
+c("Distance (m)", "Avg Area (cm²)", "Mass (g)", "Count","g/leaf", "g/cm²")
+
+```
+
+```{R, echo=FALSE}
+x <- 0:23
+y <- mass_vector[-(1:2)]
+z <- count_vector[-(1:2)]
+ar <- area_vector[-(1:2)]
+ml <- mass_per_leaf[-(1:2)]
+ma <- mass_per_area[-(1:2)]
+
+df_quadrat <- data.frame(
+  x = x,
+  y = y,
+  z = z,
+  ar = ar,
+  ml = ml,
+  ma = ma
+)
+```
+
+## Plot Leaf Count and Mass vs. Distance
+```{R}
+par(mar = c(5, 4, 4, 2) + 0.1, oma = c(0, 0, 0, 1))
+plot(x, y, type = "p", col = "#298c8c", pch = 16, ylab = "", xlab = "Distance (m)", axes = TRUE)
+
+mtext("Mass (g)", side = 2, line = 2, col = "#298c8c", cex = 1.2)  
+
+fit <- lm(log(y) ~ x)
+
+# Print R-squared value for the blue line
+summary(fit)$r.squared
+
+x_pred <- seq(min(x), max(x), length.out = 100)
+y_pred <- exp(predict(fit, newdata = data.frame(x = x_pred)))
+
+lines(x_pred, y_pred, col = "#298c8c", type = "l")
+
+par(new = TRUE)
+plot(x, z, type = "p", col = "#f1a226", pch = 16, ylab = "", xlab = "", axes = FALSE)
+
+fit <- lm(log(z) ~ x)
+
+# Print R-squared value for the blue line
+summary(fit)$r.squared
+x_pred <- seq(min(x), max(x), length.out = 100)
+z_pred <- exp(predict(fit, newdata = data.frame(x = x_pred)))
+lines(x_pred, z_pred, col = "#f1a226", type = "l")
+
+mtext("Count", side = 4, line = 2, col = "#f1a226", cex = 1.2)  
+
+axis(4, col = "black", col.axis = "black", las = 1)  
+
+```

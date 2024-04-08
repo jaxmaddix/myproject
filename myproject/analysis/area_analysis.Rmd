@@ -38,6 +38,51 @@ df_long_nona$Distance <- factor(df_long_nona$Distance, levels = unique(df_long_n
 print(df_long_nona)
 ```
 
+```{R, echo=FALSE, include=FALSE}
+na.omit(df_long_nona)
+model <- aov(Area ~ Distance, data = df_long_nona)
+```
+
+```{R, echo=FALSE}
+summary(model)
+tukey_results <- HSD.test(model, "Distance")
+tukey_df <- as.data.frame(tukey_results)
+significant_comparisons <- tukey_df[tukey_df$`p adj` < 0.05, ]
+significant_groups <- unique(c(significant_comparisons$group1, significant_comparisons$group2))
+ggplot(df_long_nona, aes(x = Area, y = Distance)) +
+  geom_violin() +
+  geom_sina(color = "green4", alpha = 0.5) +
+  stat_summary(
+    fun.data = "mean_cl_normal",
+    geom = "point",
+    color = "black",
+    size = 2.5,
+    position = position_nudge(x = 0.15)
+  ) +
+  labs(
+    title = "",
+    x = expression("Surface Area (cm"^2*")"),
+    y = "Distance (m)"
+  ) +
+  theme(
+    panel.background = element_rect(fill = "white"),
+    panel.grid = element_line(color = "white"),
+    panel.grid.major.y = element_line(color = "white")
+  ) +
+  scale_x_continuous(breaks = seq(0, max(df_long_nona$Area), by = 0.5)) +
+  coord_flip() +
+  # Add labels for significantly different groups
+  geom_text(
+    data = df_long_nona[df_long_nona$Area %in% significant_groups, ],
+    aes(label = as.character(Area)), 
+    hjust = -0.2, 
+    vjust = 0.5,
+    color = "red"
+  )
+```
+
+
+
 ## Visualize the data
 ```{R}
 # box  and whisker
@@ -92,8 +137,8 @@ ggplot(df_long_nona, aes(x = Area, y = Distance)) +
   
   labs(
     title = "",
-    x = "Leaf Surface Area (cm^2)",
-    y = "Distance from Colony Main Entrance (m)"
+    x = expression("Surface Area (cm"^2*")"),
+    y = "Distance (m)"
   ) +
   
   theme(
@@ -105,6 +150,8 @@ ggplot(df_long_nona, aes(x = Area, y = Distance)) +
   scale_x_continuous(breaks = seq(0, max(df_long_nona$Area), by = 0.5)) +
   coord_flip()
 ```
+
+### Test
 
 
 ```{R}
